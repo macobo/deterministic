@@ -18,7 +18,7 @@ module Deterministic
         predicate.call(expr) ? None.new : Some.new(expr)
       end
 
-      def try!
+      def Try
         yield rescue None.new
       end
     end

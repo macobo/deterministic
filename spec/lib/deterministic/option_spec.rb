@@ -120,8 +120,8 @@ describe Deterministic::Option do
     expect(described_class.any?(1)).to eq Some(1)
   end
 
-  it "try!" do
-    expect(described_class.try! { raise "error" }).to be_none
+  it "Try" do
+    expect(described_class.Try { raise "error" }).to be_none
   end
 end
 

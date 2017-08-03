@@ -6,7 +6,7 @@ module Deterministic
 
   class Result
     class << self
-      def try!
+      def Try
         begin
           Success.new(yield)
         rescue => err
@@ -98,7 +98,7 @@ end
 module Deterministic
   module Prelude
     module Result
-      def try!(&block); Deterministic::Result.try!(&block); end
+      def Try(&block); Deterministic::Result.Try(&block); end
       def Success(s); Deterministic::Result::Success.new(s); end
       def Failure(f); Deterministic::Result::Failure.new(f); end
     end

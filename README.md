@@ -112,13 +112,13 @@ Try failable operations to return `Success` or `Failure`
 ```ruby
 include Deterministic::Prelude::Result
 
-try! { 1 }                             # => Success(1)
-try! { raise "hell" }                  # => Failure(#<RuntimeError: hell>)
+Try { 1 }                             # => Success(1)
+Try { raise "hell" }                  # => Failure(#<RuntimeError: hell>)
 ```
 
 ### Result Chaining
 
-You can easily chain the execution of several operations. Here we got some nice function composition.  
+You can easily chain the execution of several operations. Here we got some nice function composition.
 The method must be a unary function, i.e. it always takes one parameter - the context, which is passed from call to call.
 
 The following aliases are defined
@@ -395,8 +395,8 @@ Option.some?([])                       # => Some([])
 Option.some?({})                       # => Some({})
 Option.some?(1)                        # => Some(1)
 
-Option.try! { 1 }                      # => Some(1)
-Option.try! { raise "error"}           # => None
+Option.Try { 1 }                      # => Some(1)
+Option.Try { raise "error"}           # => None
 ```
 
 ### Pattern Matching
