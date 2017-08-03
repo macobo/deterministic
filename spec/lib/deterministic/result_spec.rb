@@ -55,4 +55,9 @@ describe Deterministic::Result do
     expect(described_class.try! { 1 }).to eq Success(1)
     expect(described_class.try! { raise "error" }.inspect).to eq Failure(RuntimeError.new("error")).inspect
   end
+
+  it "ensure_success!" do
+    expect { Success(1).ensure_success! }.not_to raise_error
+    expect { Failure(RuntimeError.new("foobar")).ensure_success! }.to raise_error(RuntimeError, "foobar")
+  end
 end

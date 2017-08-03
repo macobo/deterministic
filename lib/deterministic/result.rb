@@ -51,6 +51,13 @@ module Deterministic
       is_a? Result::Failure
     end
 
+    def ensure_success!
+      match {
+        Success() {|_| self }
+        Failure() {|err| raise err}
+      }
+    end
+
     def or(other)
       raise Deterministic::Monad::NotMonadError, "Expected #{other.inspect} to be a Result" unless other.is_a? Result
       match {
